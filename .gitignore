@@ -1,0 +1,12 @@
+# Terraform local state/cache - never commit these, they can contain secrets
+# (e.g. our RDS password) and differ per machine.
+**/.terraform/
+**/.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfplan
+.idea/
+
+# Contains real credentials (e.g. db_password) - keep the example values only
+# in version control if you must, but a real deployment's file should stay local.
+src/infra/envs/dev/dev.tfvars
