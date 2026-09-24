@@ -12,4 +12,14 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
+
+  # Tags every resource this provider creates, so actual spend can be
+  # isolated in Cost Explorer / Cost & Usage Reports (see docs/COSTS.md).
+  default_tags {
+    tags = {
+      Project     = var.project_name
+      Environment = var.environment
+      ManagedBy   = "terraform"
+    }
+  }
 }
